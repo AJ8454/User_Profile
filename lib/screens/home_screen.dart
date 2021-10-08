@@ -83,7 +83,13 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: const Color(0xFFFCF4F0),
       appBar: AppBar(
-        title: const Text('User Profiles'),
+        title: Text(
+          'User Profiles',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Colors.grey[700],
+          ),
+        ),
         elevation: 0,
         backgroundColor: Colors.transparent,
       ),
