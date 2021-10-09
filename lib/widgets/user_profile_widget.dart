@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:user_profile/screens/chat_screen.dart';
 
 class UserProfile extends StatelessWidget {
   final String? fname;
@@ -14,32 +15,43 @@ class UserProfile extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 5,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          ClipOval(
-            child: Image.network(imageUrl!, width: 90),
+    return GestureDetector(
+      onTap: () => Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) =>  ChatScreen(
+            name: fname!,
+            image: imageUrl,
+
           ),
-          const SizedBox(height: 15),
-          Text(
-            '$fname $lname',
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color: Colors.grey[600],
+        ),
+      ),
+      child: Card(
+        elevation: 5,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ClipOval(
+              child: Image.network(imageUrl!, width: 90),
             ),
-          ),
-          const SizedBox(height: 5),
-          Text(
-            email!,
-            style: TextStyle(
-              fontSize: 10,
-              color: Colors.grey[400],
+            const SizedBox(height: 15),
+            Text(
+              '$fname $lname',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Theme.of(context).primaryColor,
+              ),
             ),
-          ),
-        ],
+            const SizedBox(height: 5),
+            Text(
+              email!,
+              style: TextStyle(
+                fontSize: 10,
+                color: Colors.grey[400],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
